@@ -1,0 +1,11 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  filename: MyString
+  validated: false
+  camera: one
+
+two:
+  filename: MyString
+  validated: false
+  camera: two
