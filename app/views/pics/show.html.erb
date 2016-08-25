@@ -12,7 +12,12 @@
 
 <p>
   <strong>Camera:</strong>
-  <%= @pic.camera %>
+  <%= @pic.camera_id %>
+</p>
+
+<p>
+  <strong>Image:</strong>
+  <%= image_tag @pic.filename.url %>
 </p>
 
 <%= link_to 'Edit', edit_pic_path(@pic) %> |
