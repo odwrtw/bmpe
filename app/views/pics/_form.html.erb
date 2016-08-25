@@ -1,0 +1,32 @@
+<%= form_for(pic) do |f| %>
+  <% if pic.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(pic.errors.count, "error") %> prohibited this pic from being saved:</h2>
+
+      <ul>
+      <% pic.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :filename %>
+    <%= f.text_field :filename %>
+  </div>
+
+  <div class="field">
+    <%= f.label :validated %>
+    <%= f.check_box :validated %>
+  </div>
+
+  <div class="field">
+    <%= f.label :camera_id %>
+    <%= f.text_field :camera_id %>
+  </div>
+
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>
