@@ -1,0 +1,2 @@
+class Experiment < ApplicationRecord
+end
