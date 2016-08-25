@@ -8,6 +8,7 @@
       <th>Filename</th>
       <th>Validated</th>
       <th>Camera</th>
+      <th></th>
       <th colspan="3"></th>
     </tr>
   </thead>
@@ -18,6 +19,7 @@
         <td><%= pic.filename %></td>
         <td><%= pic.validated %></td>
         <td><%= pic.camera %></td>
+        <td><%= image_tag pic.filename.thumb.url %></td>
         <td><%= link_to 'Show', pic %></td>
         <td><%= link_to 'Edit', edit_pic_path(pic) %></td>
         <td><%= link_to 'Destroy', pic, method: :delete, data: { confirm: 'Are you sure?' } %></td>

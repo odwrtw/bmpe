@@ -12,11 +12,6 @@
   <% end %>
 
   <div class="field">
-    <%= f.label :filename %>
-    <%= f.text_field :filename %>
-  </div>
-
-  <div class="field">
     <%= f.label :validated %>
     <%= f.check_box :validated %>
   </div>
@@ -24,6 +19,16 @@
   <div class="field">
     <%= f.label :camera_id %>
     <%= f.text_field :camera_id %>
+  </div>
+
+  <div class="field">
+    <%= f.label :filename %><br>
+    <%= f.file_field :filename %>
+    <% if f.object.filename? %>
+      <%= image_tag f.object.filename.url %>
+      <%= f.label :remove_filename %>
+      <%= f.check_box :remove_filename %>
+    <% end %>
   </div>
 
   <div class="actions">
