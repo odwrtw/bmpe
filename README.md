@@ -1,4 +1,6 @@
-- users
+# TODO
+
+* users
 id
 name
 email
@@ -6,7 +8,7 @@ password
 created_at
 updated_at
 
-- pics
+* pics
 id
 filename
 camera_number
@@ -14,14 +16,14 @@ validated
 created_at
 updated_at
 
-- cameras
+* cameras
 id
 number
 experiment_id
 created_at
 updated_at
 
-- experiments
+* experiments
 id
 name
 description
