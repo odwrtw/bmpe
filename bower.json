@@ -1,0 +1,17 @@
+{
+  "name": "bmpe",
+  "homepage": "https://github.com/odwrtw/bmpe",
+  "description": "Burning man pics experiment",
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "vendor/assets/components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "bootstrap": "^3.3.7"
+  }
+}
