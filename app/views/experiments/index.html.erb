@@ -17,8 +17,10 @@
         <td><%= experiment.name %></td>
         <td><%= experiment.description %></td>
         <td><%= link_to 'Show', experiment %></td>
-        <td><%= link_to 'Edit', edit_experiment_path(experiment) %></td>
-        <td><%= link_to 'Destroy', experiment, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <% if user_signed_in? %>
+          <td><%= link_to 'Edit', edit_experiment_path(experiment) %></td>
+          <td><%= link_to 'Destroy', experiment, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <%end%>
       </tr>
     <% end %>
   </tbody>
@@ -26,4 +28,6 @@
 
 <br>
 
-<%= link_to 'New Experiment', new_experiment_path %>
+<% if user_signed_in? %>
+  <%= link_to 'New Experiment', new_experiment_path %>
+<% end %>

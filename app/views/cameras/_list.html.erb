@@ -15,8 +15,10 @@
         <td><%= camera.number %></td>
         <td><%= camera.experiment_id %></td>
         <td><%= link_to 'Show', experiment_camera_url(experiment, camera) %></td>
-        <td><%= link_to 'Edit', edit_experiment_camera_path(experiment, camera) %></td>
-        <td><%= link_to 'Destroy', experiment_camera_url(experiment, camera), method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <% if user_signed_in? %>
+          <td><%= link_to 'Edit', edit_experiment_camera_path(experiment, camera) %></td>
+          <td><%= link_to 'Destroy', experiment_camera_url(experiment, camera), method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <% end %>
       </tr>
     <% end %>
   </tbody>
@@ -24,4 +26,6 @@
 
 <br>
 
-<%= link_to 'New Camera', new_experiment_camera_path(experiment) %>
+<% if user_signed_in? %>
+  <%= link_to 'New Camera', new_experiment_camera_path(experiment) %>
+<% end %>
