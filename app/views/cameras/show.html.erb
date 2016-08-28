@@ -7,7 +7,7 @@
 
 <p>
   <strong>Experiment:</strong>
-  <%= @camera.experiment_id %>
+  <%= @camera.experiment.name %>
 </p>
 
 <p>
@@ -16,8 +16,8 @@
     <tbody>
       <% @pics.map do |pic| %>
         <tr>
-          <td><%= pic.filename %></td>
           <% if user_signed_in? %>
+            <td><%= pic.filename %></td>
             <td><%= pic.validated %></td>
           <% end %>
           <td><%= pic.camera_id %></td>
