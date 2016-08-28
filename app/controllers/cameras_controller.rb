@@ -1,5 +1,6 @@
 class CamerasController < ApplicationController
   before_action :set_camera, only: [:show, :edit, :update, :destroy]
+  before_action :set_experiment, except: [:index]
   before_filter :authenticate_user!, only: [:new, :create, :edit, :update, :destroy]
 
   # GET /cameras
@@ -29,7 +30,7 @@ class CamerasController < ApplicationController
 
     respond_to do |format|
       if @camera.save
-        format.html { redirect_to @camera, notice: 'Camera was successfully created.' }
+        format.html { redirect_to experiment_camera_url(@experiment, @camera), notice: 'Camera was successfully created.' }
         format.json { render :show, status: :created, location: @camera }
       else
         format.html { render :new }
@@ -43,7 +44,7 @@ class CamerasController < ApplicationController
   def update
     respond_to do |format|
       if @camera.update(camera_params)
-        format.html { redirect_to @camera, notice: 'Camera was successfully updated.' }
+        format.html { redirect_to experiment_camera_url(@experiment, @camera), notice: 'Camera was successfully updated.' }
         format.json { render :show, status: :ok, location: @camera }
       else
         format.html { render :edit }
@@ -57,7 +58,7 @@ class CamerasController < ApplicationController
   def destroy
     @camera.destroy
     respond_to do |format|
-      format.html { redirect_to cameras_url, notice: 'Camera was successfully destroyed.' }
+      format.html { redirect_to experiment_url(@experiment), notice: 'Camera was successfully destroyed.' }
       format.json { head :no_content }
     end
   end
@@ -70,6 +71,16 @@ class CamerasController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def camera_params
-      params.require(:camera).permit(:number, :experiments_id)
+      params.require(:camera).permit(:number, :experiment_id)
+    end
+
+    def set_experiment
+      unless @camera
+        @experiment = Experiment.find(params[:experiment_id])
+        return
+      end
+      if @camera.experiment
+        @experiment = @camera.experiment
+      end
     end
 end

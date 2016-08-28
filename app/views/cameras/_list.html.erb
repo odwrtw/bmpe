@@ -1,0 +1,27 @@
+<table>
+  <thead>
+    <tr>
+      <th>id</th>
+      <th>Number</th>
+      <th>expriment id</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% cameras.each do |camera| %>
+      <tr>
+        <td><%= camera.id %></td>
+        <td><%= camera.number %></td>
+        <td><%= camera.experiment_id %></td>
+        <td><%= link_to 'Show', experiment_camera_url(experiment, camera) %></td>
+        <td><%= link_to 'Edit', edit_experiment_camera_path(experiment, camera) %></td>
+        <td><%= link_to 'Destroy', experiment_camera_url(experiment, camera), method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Camera', new_experiment_camera_path(experiment) %>

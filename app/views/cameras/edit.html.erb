@@ -1,6 +1,6 @@
 <h1>Editing Camera</h1>
 
-<%= render 'form', camera: @camera %>
+<%= render 'form', camera: @camera, experiment: @experiment %>
 
-<%= link_to 'Show', @camera %> |
-<%= link_to 'Back', cameras_path %>
+<%= link_to 'Show', experiment_camera_path(@experiment, @camera) %> |
+<%= link_to 'Back', experiment_cameras_path(@experiment) %>

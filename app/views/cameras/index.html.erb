@@ -1,29 +1,6 @@
 <p id="notice"><%= notice %></p>
 
 <h1>Cameras</h1>
+<%= render 'cameras/list', cameras: @cameras %>
 
-<table>
-  <thead>
-    <tr>
-      <th>Number</th>
-      <th>Experiments</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
-
-  <tbody>
-    <% @cameras.each do |camera| %>
-      <tr>
-        <td><%= camera.number %></td>
-        <td><%= camera.experiments %></td>
-        <td><%= link_to 'Show', camera %></td>
-        <td><%= link_to 'Edit', edit_camera_path(camera) %></td>
-        <td><%= link_to 'Destroy', camera, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
-
-<br>
-
-<%= link_to 'New Camera', new_camera_path %>
+<%= link_to 'Back', cameras_path %>

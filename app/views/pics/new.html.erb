@@ -1,5 +1,5 @@
 <h1>New Pic</h1>
 
-<%= render 'form', pic: @pic %>
+<%= render 'form', pic: @pic, experiment: @experiment, camera: @camera %>
 
-<%= link_to 'Back', pics_path %>
+<%= link_to 'Back', experiment_camera_path(@experiment, @camera) %>

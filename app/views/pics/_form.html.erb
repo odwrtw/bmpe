@@ -1,4 +1,4 @@
-<%= form_for(pic) do |f| %>
+<%= form_for [experiment, camera, pic] do |f| %>
   <% if pic.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(pic.errors.count, "error") %> prohibited this pic from being saved:</h2>
@@ -17,11 +17,6 @@
   </div>
 
   <div class="field">
-    <%= f.label :camera_id %>
-    <%= f.text_field :camera_id %>
-  </div>
-
-  <div class="field">
     <%= f.label :filename %><br>
     <%= f.file_field :filename %>
     <% if f.object.filename? %>
@@ -29,6 +24,12 @@
       <%= f.label :remove_filename %>
       <%= f.check_box :remove_filename %>
     <% end %>
+  </div>
+
+  <div class="field">
+    <%= f.label :camera_id %>
+    <%= f.hidden_field :camera_id, value: camera.id %>
+    <%= camera.id %>
   </div>
 
   <div class="actions">

@@ -1,5 +1,6 @@
 class PicsController < ApplicationController
   before_action :set_pic, only: [:show, :edit, :update, :destroy]
+  before_action :set_camera, except: [:index]
   before_filter :authenticate_user!, only: [:index, :edit, :update, :destroy]
 
   # GET /pics
@@ -15,7 +16,7 @@ class PicsController < ApplicationController
 
   # GET /pics/new
   def new
-    @pic = Pic.new
+    @pic = @camera.pics.build
   end
 
   # GET /pics/1/edit
@@ -25,11 +26,11 @@ class PicsController < ApplicationController
   # POST /pics
   # POST /pics.json
   def create
-    @pic = Pic.new(pic_params)
+    @pic = @camera.pics.build(pic_params)
 
     respond_to do |format|
       if @pic.save
-        format.html { redirect_to @pic, notice: 'Pic was successfully created.' }
+        format.html { redirect_to experiment_camera_path(@experiment, @camera), notice: 'Pic was successfully created.' }
         format.json { render :show, status: :created, location: @pic }
       else
         format.html { render :new }
@@ -43,7 +44,7 @@ class PicsController < ApplicationController
   def update
     respond_to do |format|
       if @pic.update(pic_params)
-        format.html { redirect_to @pic, notice: 'Pic was successfully updated.' }
+        format.html { redirect_to experiment_camera_path(@experiment, @camera), notice: 'Pic was successfully updated.' }
         format.json { render :show, status: :ok, location: @pic }
       else
         format.html { render :edit }
@@ -57,7 +58,7 @@ class PicsController < ApplicationController
   def destroy
     @pic.destroy
     respond_to do |format|
-      format.html { redirect_to pics_url, notice: 'Pic was successfully destroyed.' }
+      format.html { redirect_to experiment_camera_url(@experiment, @camera), notice: 'Pic was successfully destroyed.' }
       format.json { head :no_content }
     end
   end
@@ -71,5 +72,17 @@ class PicsController < ApplicationController
     # Never trust parameters from the scary internet, only allow the white list through.
     def pic_params
       params.require(:pic).permit(:filename, :validated, :camera_id)
+    end
+
+    def set_camera
+      unless @pic
+        @camera = Camera.find(params[:camera_id])
+        @experiment = @camera.experiment
+        return
+      end
+      if @pic.camera
+        @camera = @pic.camera
+        @experiment = @camera.experiment
+      end
     end
 end

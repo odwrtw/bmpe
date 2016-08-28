@@ -6,9 +6,29 @@
 </p>
 
 <p>
-  <strong>Experiments:</strong>
-  <%= @camera.experiments %>
+  <strong>Experiment:</strong>
+  <%= @camera.experiment_id %>
 </p>
 
-<%= link_to 'Edit', edit_camera_path(@camera) %> |
-<%= link_to 'Back', cameras_path %>
+<p>
+  <strong>Pictures</strong>
+  <table class="table">
+    <tbody>
+      <% @camera.pics.map do |pic| %>
+        <tr>
+          <td><%= pic.filename %></td>
+          <td><%= pic.validated %></td>
+          <td><%= pic.camera_id %></td>
+          <td><%= image_tag pic.filename.thumb.url %></td>
+          <td><%= link_to 'Show', experiment_camera_pic_path(@experiment, @camera, pic) %></td>
+          <td><%= link_to 'Edit', edit_experiment_camera_pic_path(@experiment, @camera, pic) %></td>
+          <td><%= link_to 'Destroy', experiment_camera_pic_path(@experiment, @camera, pic), method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        </tr>
+      <%end%>
+    </tbody>
+  </table>
+</p>
+<%= link_to 'New Pic', new_experiment_camera_pic_path(@experiment, @camera) %>
+
+<%= link_to 'Edit', edit_experiment_camera_path(@experiment, @camera) %> |
+<%= link_to 'Back', experiment_path(@experiment) %>

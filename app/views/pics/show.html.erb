@@ -20,5 +20,5 @@
   <%= image_tag @pic.filename.url %>
 </p>
 
-<%= link_to 'Edit', edit_pic_path(@pic) %> |
-<%= link_to 'Back', pics_path %>
+<%= link_to 'Edit', edit_experiment_camera_pic_path(@experiment, @camera, @pic) %> |
+<%= link_to 'Back', experiment_camera_pics_path(@experiment, @camera, @pic) %>
