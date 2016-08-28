@@ -1,0 +1,14 @@
+version: '2'
+services:
+  web:
+    build: .
+    container_name: bmpe
+    environment:
+      ENVIRONMENT: production
+      DEVISE_SECRET_KEY: 463f1275cfb74810ab1b3643371dbaa725380aa1344fa257d95eaa715862065eea7460fd4b5f1d86bae97db324686dc0c4ebf0082c5f0b342bd2d8fc2217e277
+      SECRET_KEY_BASE: 463f1275cfb74810ab1b3643371dbaa725380aa1344fa257d95eaa715862065eea7460fd4b5f1d86bae97db324686dc0c4ebf0082c5f0b342bd2d8fc2217e277
+    volumes:
+    - /var/bmpe/uploads:/bmpe/public/uploads
+    - /var/bmpe/db/production.sqlite3:/bmpe/db/production.sqlite3
+    ports:
+    - "127.0.0.1:3000:3000"
