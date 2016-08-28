@@ -14,10 +14,12 @@
   <strong>Pictures</strong>
   <table class="table">
     <tbody>
-      <% @camera.pics.map do |pic| %>
+      <% @pics.map do |pic| %>
         <tr>
           <td><%= pic.filename %></td>
-          <td><%= pic.validated %></td>
+          <% if user_signed_in? %>
+            <td><%= pic.validated %></td>
+          <% end %>
           <td><%= pic.camera_id %></td>
           <td><%= image_tag pic.filename.thumb.url %></td>
           <td><%= link_to 'Show', experiment_camera_pic_path(@experiment, @camera, pic) %></td>

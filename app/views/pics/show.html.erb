@@ -5,10 +5,12 @@
   <%= @pic.filename %>
 </p>
 
+<% if user_signed_in? %>
 <p>
   <strong>Validated:</strong>
   <%= @pic.validated %>
 </p>
+<% end %>
 
 <p>
   <strong>Camera:</strong>
@@ -23,4 +25,4 @@
 <% if user_signed_in? %>
   <%= link_to 'Edit', edit_experiment_camera_pic_path(@experiment, @camera, @pic) %> |
 <% end %>
-<%= link_to 'Back', experiment_camera_pics_path(@experiment, @camera, @pic) %>
+<%= link_to 'Back', experiment_camera_path(@experiment, @camera) %>
