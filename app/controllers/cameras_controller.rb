@@ -12,6 +12,11 @@ class CamerasController < ApplicationController
   # GET /cameras/1
   # GET /cameras/1.json
   def show
+    if user_signed_in?
+      @pics = @camera.pics
+    else
+      @pics = @camera.pics.where(validated: true)
+    end
   end
 
   # GET /cameras/new
