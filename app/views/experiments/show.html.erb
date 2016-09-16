@@ -10,10 +10,9 @@
   <%= @experiment.description %>
 </p>
 
-<p>
-  <strong>Cameras:</strong>
+<div>
   <%= render template: 'cameras/_list', locals: {cameras: @experiment.cameras, experiment: @experiment} %>
-</p>
+</div>
 
 <% if user_signed_in? %>
 <%= link_to 'Edit', edit_experiment_path(@experiment) %> |

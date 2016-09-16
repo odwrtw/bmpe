@@ -1,24 +1,16 @@
-<table>
-  <thead>
-    <tr>
-      <th>Number</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
-
-  <tbody>
-    <% cameras.each do |camera| %>
-      <tr>
-        <td><%= camera.number %></td>
-        <td><%= link_to 'Show', experiment_camera_url(experiment, camera) %></td>
+<div>
+  <% cameras.each do |camera| %>
+    <article>
+      <%= link_to experiment_camera_url(experiment, camera) do %>
+        <h3>Camera #<%= camera.number %></h3>
         <% if user_signed_in? %>
           <td><%= link_to 'Edit', edit_experiment_camera_path(experiment, camera) %></td>
           <td><%= link_to 'Destroy', experiment_camera_url(experiment, camera), method: :delete, data: { confirm: 'Are you sure?' } %></td>
         <% end %>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
+      <% end %>
+    </article>
+  <% end %>
+</div>
 
 <br>
 
