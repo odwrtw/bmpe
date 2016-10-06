@@ -1,30 +1,19 @@
 <p id="notice"><%= notice %></p>
 
-<h1>Experiments</h1>
-
-<table>
-  <thead>
-    <tr>
-      <th>Name</th>
-      <th>Description</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
-
-  <tbody>
-    <% @experiments.each do |experiment| %>
-      <tr>
-        <td><%= experiment.name %></td>
-        <td><%= experiment.description %></td>
-        <td><%= link_to 'Show', experiment %></td>
+<div>
+  <% @experiments.each do |experiment| %>
+    <article style="background: #fff url(../assets/images/bm.gif) top center no-repeat;" class="col-sm-12">
+      <%= link_to experiment do %>
+        <h3><%= experiment.name %></h3>
+        <small><%= experiment.description %></small>
         <% if user_signed_in? %>
-          <td><%= link_to 'Edit', edit_experiment_path(experiment) %></td>
-          <td><%= link_to 'Destroy', experiment, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+          <%= link_to 'Edit', edit_experiment_path(experiment)%>
+          <%= link_to 'Destroy', experiment, method: :delete, data: { confirm: 'Are you sure?' } %>
         <%end%>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
+      <%end%>
+    </article>
+  <% end %>
+</div>
 
 <br>
 
