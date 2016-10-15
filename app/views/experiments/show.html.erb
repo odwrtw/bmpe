@@ -1,14 +1,10 @@
 <p id="notice"><%= notice %></p>
 
-<p>
-  <strong>Name:</strong>
+<h2>
   <%= @experiment.name %>
-</p>
+</h2>
 
-<p>
-  <strong>Description:</strong>
-  <%= @experiment.description %>
-</p>
+<small><%= @experiment.description %></small>
 
 <div>
   <%= render template: 'cameras/_list', locals: {cameras: @experiment.cameras, experiment: @experiment} %>

@@ -1,6 +1,6 @@
 <div>
   <% cameras.each do |camera| %>
-    <article>
+    <article class="col-sm-12" style="background: #fff url(<%= getImageUrlFromCamera(camera) %>) top center no-repeat; min-height: 300px; margin-bottom: 30px; margin-bottom: 30px;">
       <%= link_to experiment_camera_url(experiment, camera) do %>
         <h3>Camera #<%= camera.number %></h3>
         <% if user_signed_in? %>

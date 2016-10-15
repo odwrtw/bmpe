@@ -1,10 +1,5 @@
 <p id="notice"><%= notice %></p>
 
-<p>
-  <strong>Filename:</strong>
-  <%= @pic.filename %>
-</p>
-
 <% if user_signed_in? %>
 <p>
   <strong>Validated:</strong>
@@ -12,13 +7,11 @@
 </p>
 <% end %>
 
-<p>
-  <strong>Camera:</strong>
-  <%= @pic.camera_id %>
-</p>
+<h3>
+  Camera #<%= @pic.camera_id %>
+</h3>
 
 <p>
-  <strong>Image:</strong>
   <%= image_tag @pic.filename.url %>
 </p>
 

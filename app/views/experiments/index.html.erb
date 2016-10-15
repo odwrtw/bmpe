@@ -2,7 +2,7 @@
 
 <div>
   <% @experiments.each do |experiment| %>
-    <article style="background: #fff url(../assets/images/bm.gif) top center no-repeat;" class="col-sm-12">
+    <article style="background: #fff url(<%= getImageUrlFromExperiment(experiment) %>) top center no-repeat; min-height: 300px; margin-bottom: 30px;" class="col-sm-12">
       <%= link_to experiment do %>
         <h3><%= experiment.name %></h3>
         <small><%= experiment.description %></small>
